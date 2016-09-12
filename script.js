@@ -12,42 +12,28 @@ window.onload = function() {
 	var seekBar = document.getElementById("seek-bar");
 	var volumeBar = document.getElementById("volume-bar");
 
-
-	// Event listener for the play/pause button
-	playButton.addEventListener("click", function() {
+	var playPauseAction = function() {
 		if (video.paused == true) {
 			// Play the video
 			video.play();
 
 			// Update the button text to 'Pause'
-			playButton.innerHTML = "Pause";
+			playButton.innerHTML = "&#10074;&#10074;";
 		} else {
 			// Pause the video
 			video.pause();
 
 			// Update the button text to 'Play'
-			playButton.innerHTML = "Play";
+			playButton.innerHTML = "&#9658;";
 		}
-	});
+	}
+
 
 	// Event listener for the play/pause button
-	video.addEventListener("click", function() {
-		if (video.paused == true) {
-			// Play the video
-			video.play();
+	playButton.addEventListener("click", playPauseAction);
 
-			// Update the button text to 'Pause'
-			playButton.innerHTML = "Pause";
-		} else {
-			// Pause the video
-			video.pause();
-
-			// Update the button text to 'Play'
-			playButton.innerHTML = "Play";
-		}
-
-		progress.setAttribute('max', video.duration);
-	});
+	// Event listener for the play/pause button
+	video.addEventListener("click", playPauseAction);
 
 	// React to the user clicking within the progress bar
 	progress.addEventListener('click', function(e) {
